@@ -10,8 +10,21 @@
     var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
       preload: preload, create: create, update: update
     });
-    function preload() {}
-    function create() {}
+
+    var ball;
+
+    function preload() {
+      game.scale.scalemode = Phaser.ScaleManager.SHOW_ALL;
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+      game.stage.backgroundColor = '#333';
+      game.load.image('ball', 'assets/ball.png')
+    }
+
+    function create() {
+      ball = game.add.sprite(50, 50, 'ball')
+    }
+
     function update() {}
 </script>
 </body>
