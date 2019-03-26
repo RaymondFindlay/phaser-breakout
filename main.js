@@ -34,7 +34,7 @@ var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
     ball = game.add.sprite(game.world.width*0.5, game.world.height-25, 'ball')
     ball.anchor.set(0.5);
     game.physics.enable(ball, Phaser.Physics.ARCADE);
-    ball.body.velocity.set(150, -150);
+    ball.body.velocity.set(300, -300);
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
     ball.checkWorldBounds = true;
@@ -66,6 +66,17 @@ var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
       brick.kill(); 
       score += 1;
       scoreDisplay.setText('Score: ' + score);
+
+      var bricksRemaining = 0;
+      //loop through remaining bricks and get the count
+      for(i = 0; i < bricks.children.length; i++) {
+          if(bricks.children[i].alive) bricksRemaining++;
+      }
+
+      if(bricksRemaining === 0) {
+          alert("CONGLATURATION! \n YOU HAVE COMPLETED A GREAT GAME. \n AND PROOVED THE JUSTICE OF OUR CULTURE! \n NOW GO AND REST OUR HEROES.");
+          location.reload();
+      }
     }
 
   function drawBricks() {
