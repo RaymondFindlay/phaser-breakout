@@ -2,4 +2,4 @@
 
 Breakout browser game using the Phaser js framework.
 
-Get started at www.phaser.io
+DEMO: https://raymondfindlay.github.io/phaser-breakout
