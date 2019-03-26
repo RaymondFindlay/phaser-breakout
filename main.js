@@ -10,6 +10,9 @@ var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
   var newBrick;
   // brick data
   var brickData;
+  //scores
+  var score = 0;
+  var scoreDisplay;
 
   function preload() {
     game.scale.scalemode = Phaser.ScaleManager.SHOW_ALL;
@@ -48,6 +51,9 @@ var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
 
     //bricks
     drawBricks();
+
+    //score logic
+    scoreDisplay = game.add.text(5, 5, 'Score: 0', { font: '18px Impact', fill: '#fff' });
   }
 
   function update() {
@@ -56,7 +62,11 @@ var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
     paddle.x = game.input.x || game.world.width*0.5;
   }
 
-  function ballBrickCollision(ball, brick) { brick.kill(); }
+  function ballBrickCollision(ball, brick) { 
+      brick.kill(); 
+      score += 1;
+      scoreDisplay.setText('Score: ' + score);
+    }
 
   function drawBricks() {
     // data
